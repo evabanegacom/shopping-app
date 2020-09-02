@@ -1,0 +1,8 @@
+<% @products.each do |admin_product| %>
+
+<p><%= admin_product.name %></p>
+<p><%= admin_product.description %></p>
+<p><%= admin_product.price %></p>
+<p><%= link_to 'EDit', edit_admin_product_path(admin_product) %></p>
+<p><%= link_to 'delete', admin_product_path(admin_product), method: :delete %></p>
+<% end %>

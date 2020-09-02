@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<%#= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', category_path %>
+
+<h1 class='jumbotron'>Shopping App | <%= @category.name %></h1>
+
+<div class='container'>
+  <div class='row'>
+    <p><%= render 'shared/product', collection: @products %></p>
+  </div>
+</div>

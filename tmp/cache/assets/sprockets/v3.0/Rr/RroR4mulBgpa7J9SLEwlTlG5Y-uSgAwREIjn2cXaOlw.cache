@@ -1,0 +1,11 @@
+I"Å(function() {
+  $(function() {
+    if (!typeOf(gon === 'undefined')) {
+      return braintree.setup(gon(client_token, 'dropin', {
+        container: 'dropin'
+      }));
+    }
+  });
+
+}).call(this);
+:ET

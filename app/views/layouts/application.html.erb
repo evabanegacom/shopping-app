@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Market</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= include_gon %>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+   <% if notice %>
+  		<p class="notice"><%= notice %></p>
+  <% end %>
+<% if alert %>
+  	<p class="alert"><%= alert %></p>
+<% end %>
+
+<% if user_signed_in? %>
+    <p class="control">
+      <%= link_to current_user.email, edit_user_registration_path, class: "button is-info" %>
+    </p>
+    <p class="control">
+      <%= link_to 'Cart, ('+ "#{current_user.cart_count}" +')', cart_path, class: "button is-info" %>
+    </p>
+    <p>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-info" %>
+    </p>
+  <% else %>
+    <p class="control">
+      <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
+    </p>
+    <p class="control">
+      <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %>
+    </p>
+  <% end %>
+    <%= yield %>
+    <nav class='navbar'>
+      <div class='container'>
+        <%= link_to 'Home', products_path %>
+        <% Category.all.each do |category| %>
+        <p class='navlink'><%= link_to category.name.capitalize, category_path(category) %>
+        <% end %>
+      </div>
+      <% if admin_signed_in? %>
+      <h4>Admin</h4>
+      <%= link_to 'Categories', admin_categories_path, class: 'navlink'%>
+      <%= link_to 'Product', admin_products_path, class:'navlink'%>
+      <%= link_to 'Orders', admin_orders_path, class:'navlink'%>
+      <%= link_to "Logout", destroy_admin_session_path, method: :delete, class:"button is-info" %>
+      <% end %>
+    </nav>
+  </body>
+</html>

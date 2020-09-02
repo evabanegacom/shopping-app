@@ -1,0 +1,23 @@
+<h1 class='jumbotron'>your shopping cart</h1>
+<div class='container'>
+  <p>price</p>
+  <p>Name</p>
+  <p>Quantity</p>
+  <p>Subtotal</p>
+</div>
+
+<% @cart_products_with_qty.each do |array| %>
+<% product = array[0]%>
+<% qty = array[1]%>
+
+<%= product.name%>
+<%= product.price%>
+<%= qty %>
+<%= product.price*qty.to_i %>
+<%= link_to '+', add_to_cart_path(product), method: :put %>
+<%= link_to '-', remove_one_cart_path(product), method: :put %>
+<%= link_to 'Remove', remove_from_cart_path(product), method: :put %>
+<%= link_to 'checkout', new_transaction_path unless current_user.get_cart_products_with_qty.blank?%> 
+<p>total</p>
+<%= @cart_total %>
+<% end %>

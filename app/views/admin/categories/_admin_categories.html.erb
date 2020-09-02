@@ -1,0 +1,6 @@
+<% @categories.each do |admin_category|%>
+
+<p><%= admin_category.name %></p>
+<p><%= link_to 'Edit', edit_admin_category_path(admin_category)%></p>
+<p><%= link_to 'delete', admin_category_path(admin_category), method: :delete %></p>
+<% end %>

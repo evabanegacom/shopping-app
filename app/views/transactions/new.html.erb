@@ -1,0 +1,13 @@
+<h1 class='jumbotron'>Checkout</h1>
+
+<div class='container card p-5'>
+  <h2>
+    new transaction<%= form_tag transactions_path do %>
+    <p>please enter payment details:</p>
+    <div id='dropin'></div>
+    <%= submit_tag "pay $ #{current_user.cart_total_price}" %>
+    <% end %>
+  </h2>
+  <br>
+  <br>
+</div>

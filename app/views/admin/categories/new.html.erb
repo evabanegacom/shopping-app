@@ -1,0 +1,9 @@
+<h1 class='jumbotron'>New Category</h1>
+<div class='container'>
+  <%= simple_form_for [:admin, @category], class: 'form-horizontal' do |f|  %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+  <% end %>
+
+  <%= link_to 'back to category list', admin_categories_path%>
+</div>
